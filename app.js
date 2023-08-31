@@ -5,7 +5,7 @@ const blogRoutes = require('./routes/blogRoutes.js')
 
 //express app
 const  app = express();
-const mongoURL ="mongodb+srv://geo:totoivy@cluster0.bpodhqs.mongodb.net/?retryWrites=true&w=majority"
+const mongoURL =""
 mongoose.connect(mongoURL)
 .then((result) =>{app.listen(3000);})
 .catch((err) => {console.log('err')})
