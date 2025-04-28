@@ -2,13 +2,19 @@ const express = require('express')
 const morgan = require('morgan');
 const mongoose = require('mongoose');
 const blogRoutes = require('./routes/blogRoutes.js')
+const dotenv = require('dotenv')
+
+dotenv.config()
 
 //express app
 const  app = express();
-const mongoURL =""
-mongoose.connect(mongoURL)
-.then((result) =>{app.listen(3000);})
-.catch((err) => {console.log('err')})
+const port = process.env.PORT || 3000
+
+mongoose.connect(process.env.mongoURL)
+.then((result) =>{app.listen(port);
+    console.log(`app is running on : http://localhost:${port}/blogs`)
+})
+.catch((err) => {console.log('Not connected,',err)})
 
 //set view engine
 app.set('view engine', 'ejs');
